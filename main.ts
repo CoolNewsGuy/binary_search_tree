@@ -9,3 +9,12 @@ class Node {
         this.right = null;
     }
 }
+
+class BinarySearchTree {
+    root: Node | null;
+
+    constructor(root: Node | null = null) {
+        this.root = root;
+    }
+}
+
