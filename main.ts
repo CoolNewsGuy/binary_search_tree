@@ -46,11 +46,7 @@ class BinarySearchTree {
         return root;
     }
 
-    prettyPrint(
-        node: Node | null = this.root,
-        prefix = "",
-        isLeft = true
-    ): void {
+    prettyPrint(node = this.root, prefix = "", isLeft = true): void {
         if (node === null) {
             return;
         }
