@@ -131,4 +131,20 @@ class BinarySearchTree {
 
         return root;
     }
+
+    find(value: number): Node | null {
+        return this.findRec(value, this.root);
+    }
+
+    private findRec(value: number, root: Node | null): Node | null {
+        if (root === null || value === root.data) {
+            return root;
+        }
+
+        if (value < root.data) {
+            return this.findRec(value, root.left);
+        }
+
+        return this.findRec(value, root.right);
+    }
 }
