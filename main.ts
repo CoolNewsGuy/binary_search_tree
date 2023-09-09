@@ -29,7 +29,7 @@ class BinarySearchTree {
         // sort the array and set end
         if (end === undefined) {
             arr = [...new Set(arr)];
-            arr.sort();
+            arr.sort((a, b) => a - b);
             end = arr.length - 1;
         }
 
