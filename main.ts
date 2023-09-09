@@ -183,4 +183,18 @@ class BinarySearchTree {
         func(root);
         this.inorderRec(func, root.right);
     }
+
+    preoder(func: FunctionOfNodeParam): void {
+        this.preoderRec(func, this.root);
+    }
+
+    private preoderRec(func: FunctionOfNodeParam, root: Node | null): void {
+        if (root === null) {
+            return;
+        }
+
+        func(root);
+        this.preoderRec(func, root.left);
+        this.preoderRec(func, root.right);
+    }
 }
