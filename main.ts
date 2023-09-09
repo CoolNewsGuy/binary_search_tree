@@ -147,4 +147,24 @@ class BinarySearchTree {
 
         return this.findRec(value, root.right);
     }
+
+    levelOrder(func: (node: Node) => unknown): void {
+        if (this.root === null) {
+            return;
+        }
+
+        const queue = [this.root];
+
+        while (queue.length !== 0) {
+            const firstElement = queue.pop() as Node;
+            func(firstElement);
+
+            if (firstElement.left !== null) {
+                queue.push(firstElement.left);
+            }
+            if (firstElement.right !== null) {
+                queue.push(firstElement.right);
+            }
+        }
+    }
 }
