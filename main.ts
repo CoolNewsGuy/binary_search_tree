@@ -150,16 +150,22 @@ class BinarySearchTree {
         return this.findRec(value, root.right);
     }
 
-    levelOrder(func: FunctionOfNodeParam): void {
+    levelOrder(func?: FunctionOfNodeParam): void | number[] {
         if (this.root === null) {
             return;
         }
 
+        const values = [];
         const queue = [this.root];
 
         while (queue.length !== 0) {
             const firstElement = queue.pop() as Node;
-            func(firstElement);
+
+            if (func != undefined) {
+                func(firstElement);
+            } else {
+                values.push(firstElement.data);
+            }
 
             if (firstElement.left !== null) {
                 queue.push(firstElement.left);
@@ -167,6 +173,10 @@ class BinarySearchTree {
             if (firstElement.right !== null) {
                 queue.push(firstElement.right);
             }
+        }
+
+        if (func == undefined) {
+            return values;
         }
     }
 
