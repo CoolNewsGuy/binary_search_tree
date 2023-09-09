@@ -86,4 +86,49 @@ class BinarySearchTree {
 
         return node;
     }
+
+    delete(value: number): void {
+        this.root = this.deleteRec(value, this.root);
+    }
+
+    private deleteRec(value: number, root: Node | null): Node | null {
+        if (root === null) {
+            return null;
+        }
+
+        if (value === root.data) {
+            if (root.left === null) {
+                return root.right;
+            } else if (root.right === null) {
+                return root.left;
+            }
+
+            // both children exist
+            let successorParent = root;
+            let successor = root.right;
+
+            while (successor.left !== null) {
+                successorParent = successor;
+                successor = successor.left;
+            }
+
+            if (successorParent === root) {
+                successorParent.right = successor.right;
+            } else {
+                successorParent.left = successor.right;
+            }
+
+            root.data = successor.data;
+
+            return root;
+        }
+
+        if (value < root.data) {
+            root.left = this.deleteRec(value, root.left);
+        } else {
+            root.right = this.deleteRec(value, root.right);
+        }
+
+        return root;
+    }
 }
