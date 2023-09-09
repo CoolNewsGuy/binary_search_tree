@@ -1,3 +1,5 @@
+type FunctionOfNodeParam = (node: Node) => unknown;
+
 class Node {
     data: number;
     left: Node | null;
@@ -148,7 +150,7 @@ class BinarySearchTree {
         return this.findRec(value, root.right);
     }
 
-    levelOrder(func: (node: Node) => unknown): void {
+    levelOrder(func: FunctionOfNodeParam): void {
         if (this.root === null) {
             return;
         }
@@ -168,11 +170,11 @@ class BinarySearchTree {
         }
     }
 
-    inorder(func: (node: Node) => unknown): void {
+    inorder(func: FunctionOfNodeParam): void {
         this.inorderRec(func, this.root);
     }
 
-    private inorderRec(func: (node: Node) => unknown, root: Node | null): void {
+    private inorderRec(func: FunctionOfNodeParam, root: Node | null): void {
         if (root === null) {
             return;
         }
