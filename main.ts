@@ -68,4 +68,22 @@ class BinarySearchTree {
             );
         }
     }
+
+    insert(value: number): void {
+        this.root = this.insertRec(value, this.root);
+    }
+
+    private insertRec(value: number, node: Node | null): Node {
+        if (node === null) {
+            node = new Node(value);
+        }
+
+        if (value < node.data) {
+            node.left = this.insertRec(value, node.left);
+        } else if (value > node.data) {
+            node.right = this.insertRec(value, node.right);
+        }
+
+        return node;
+    }
 }
