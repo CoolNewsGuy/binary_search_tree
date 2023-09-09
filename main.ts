@@ -167,4 +167,18 @@ class BinarySearchTree {
             }
         }
     }
+
+    inorder(func: (node: Node) => unknown): void {
+        this.inorderRec(func, this.root);
+    }
+
+    private inorderRec(func: (node: Node) => unknown, root: Node | null): void {
+        if (root === null) {
+            return;
+        }
+
+        this.inorderRec(func, root.left);
+        func(root);
+        this.inorderRec(func, root.right);
+    }
 }
