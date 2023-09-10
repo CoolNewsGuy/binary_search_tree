@@ -180,18 +180,32 @@ class BinarySearchTree {
         }
     }
 
-    inorder(func: FunctionOfNodeParam): void {
-        this.inorderRec(func, this.root);
+    inorder(func?: FunctionOfNodeParam): void | number[] {
+        return this.inorderRec(this.root, func);
     }
 
-    private inorderRec(func: FunctionOfNodeParam, root: Node | null): void {
+    private inorderRec(
+        root: Node | null,
+        func?: FunctionOfNodeParam,
+        arr: number[] = []
+    ): void | number[] {
         if (root === null) {
             return;
         }
 
-        this.inorderRec(func, root.left);
-        func(root);
-        this.inorderRec(func, root.right);
+        this.inorderRec(root.left, func, arr);
+
+        if (func != undefined) {
+            func(root);
+        } else {
+            arr.push(root.data);
+        }
+
+        this.inorderRec(root.right, func, arr);
+
+        if (func == undefined) {
+            return arr;
+        }
     }
 
     preoder(func: FunctionOfNodeParam): void {
