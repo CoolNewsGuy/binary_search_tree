@@ -235,17 +235,27 @@ class BinarySearchTree {
         }
     }
 
-    postorder(func: FunctionOfNodeParam): void {
-        this.postorderRec(func, this.root);
+    postorder(func?: FunctionOfNodeParam): void | number[] {
+        return this.postorderRec(this.root, func);
     }
 
-    private postorderRec(func: FunctionOfNodeParam, root: Node | null): void {
+    private postorderRec(
+        root: Node | null,
+        func?: FunctionOfNodeParam,
+        arr: number[] = []
+    ): void | number[] {
         if (root === null) {
             return;
         }
 
-        this.postorderRec(func, root.left);
-        this.postorderRec(func, root.right);
-        func(root);
+        this.postorderRec(root.left, func, arr);
+        this.postorderRec(root.right, func, arr);
+
+        if (func != undefined) {
+            func(root);
+        } else {
+            arr.push(root.data);
+            return arr;
+        }
     }
 }
