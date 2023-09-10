@@ -258,4 +258,18 @@ class BinarySearchTree {
             return arr;
         }
     }
+
+    height(node: Node | null): number {
+        return this.heightRec(node);
+    }
+
+    private heightRec(root: Node | null): number {
+        if (root === null || (root.left === null && root.right === null)) {
+            return 0;
+        }
+
+        return (
+            Math.max(this.heightRec(root.left), this.heightRec(root.right)) + 1
+        );
+    }
 }
