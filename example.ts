@@ -16,3 +16,5 @@ const numbers = generateRandomNumberUnder100(20);
 const tree = new BinarySearchTree(numbers);
 
 tree.prettyPrint();
+
+console.log("Balanced tree?", tree.isBalanced());
