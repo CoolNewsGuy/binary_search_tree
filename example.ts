@@ -35,3 +35,5 @@ console.log("The elements in in-order: ", tree.inorder());
 
 numbers = generateRandomNumbers(100, 500, 20);
 numbers.forEach((num) => tree.insert(num));
+
+tree.prettyPrint();
