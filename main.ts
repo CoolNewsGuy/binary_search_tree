@@ -272,4 +272,20 @@ class BinarySearchTree {
             Math.max(this.heightRec(root.left), this.heightRec(root.right)) + 1
         );
     }
+
+    depth(node: Node | null): number {
+        return this.depthRec(node);
+    }
+
+    private depthRec(node: Node | null, root = this.root): number {
+        if (node === null || root === null || node.data === root.data) {
+            return 0;
+        }
+
+        if (node.data < root.data) {
+            return 1 + this.depthRec(node, root.left);
+        }
+
+        return 1 + this.depthRec(node, root.right);
+    }
 }
