@@ -40,4 +40,9 @@ tree.prettyPrint();
 console.log("Balanced tree after adding elements?", tree.isBalanced());
 tree.rebalance();
 tree.prettyPrint();
+
 console.log("Balanced tree after adding rebalancing?", tree.isBalanced());
+console.log("The elements in level-order: ", tree.levelOrder());
+console.log("The elements in pre-order: ", tree.preoder());
+console.log("The elements in post-order: ", tree.postorder());
+console.log("The elements in in-order: ", tree.inorder());
