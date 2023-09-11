@@ -308,4 +308,12 @@ class BinarySearchTree {
             this.isBalancedRec(root.right)
         );
     }
+
+    rebalance(): void {
+        if (this.isBalanced()) {
+            return;
+        }
+
+        this.root = this.buildFromArray(this.inorder()!);
+    }
 }
