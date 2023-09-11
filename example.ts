@@ -1,10 +1,20 @@
 import { BinarySearchTree } from "./main.ts";
 
-function generateRandomNumberUnder100(howMany: number): number[] {
+function generateRandomNumbers(
+    minValue: number,
+    maxValue: number,
+    howMany: number
+): number[] {
     const numbers = [];
 
     for (let counter = 1; counter <= howMany; counter++) {
-        const randomNumber = Math.floor(Math.random() * 101);
+        let randomNumber =
+            minValue + Math.floor(Math.random() * (maxValue + 1));
+
+        while (randomNumber > maxValue) {
+            randomNumber =
+                minValue + Math.floor(Math.random() * (maxValue + 1));
+        }
 
         numbers.push(randomNumber);
     }
@@ -12,7 +22,7 @@ function generateRandomNumberUnder100(howMany: number): number[] {
     return numbers;
 }
 
-const numbers = generateRandomNumberUnder100(20);
+const numbers = generateRandomNumbers(0, 100, 20);
 const tree = new BinarySearchTree(numbers);
 
 tree.prettyPrint();
