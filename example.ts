@@ -39,4 +39,5 @@ numbers.forEach((num) => tree.insert(num));
 tree.prettyPrint();
 console.log("Balanced tree after adding elements?", tree.isBalanced());
 tree.rebalance();
-tree.prettyPrint()
+tree.prettyPrint();
+console.log("Balanced tree after adding rebalancing?", tree.isBalanced());
