@@ -15,3 +15,4 @@ function generateRandomNumberUnder100(howMany: number): number[] {
 const numbers = generateRandomNumberUnder100(20);
 const tree = new BinarySearchTree(numbers);
 
+tree.prettyPrint();
