@@ -37,3 +37,4 @@ numbers = generateRandomNumbers(100, 500, 20);
 numbers.forEach((num) => tree.insert(num));
 
 tree.prettyPrint();
+console.log("Balanced tree after adding elements?", tree.isBalanced());
