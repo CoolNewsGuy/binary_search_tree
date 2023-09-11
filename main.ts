@@ -288,4 +288,24 @@ class BinarySearchTree {
 
         return 1 + this.depthRec(node, root.right);
     }
+
+    isBalanced(): boolean {
+        return this.isBalancedRec(this.root);
+    }
+
+    private isBalancedRec(root: Node | null): boolean {
+        if (root === null) {
+            return true;
+        }
+
+        const leftHeight = root.left === null ? 0 : this.height(root.left) + 1;
+        const rightHeight =
+            root.right === null ? 0 : this.height(root.right) + 1;
+
+        return (
+            Math.abs(rightHeight - leftHeight) <= 1 &&
+            this.isBalancedRec(root.left) &&
+            this.isBalancedRec(root.right)
+        );
+    }
 }
