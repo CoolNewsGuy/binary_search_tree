@@ -12,7 +12,7 @@ class Node {
     }
 }
 
-class BinarySearchTree {
+export class BinarySearchTree {
     root: Node | null;
 
     constructor(arr?: number[]) {
