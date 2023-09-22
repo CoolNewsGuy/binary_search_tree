@@ -159,7 +159,7 @@ export class BinarySearchTree {
         const queue = [this.root];
 
         while (queue.length !== 0) {
-            const firstElement = queue.pop() as Node;
+            const firstElement = queue.shift() as Node;
 
             if (func != undefined) {
                 func(firstElement);
